@@ -1,11 +1,10 @@
-# UDPPingerServer.py
-# We will need the following module to generate randomized lost packets
 import random
-from socket import *
+from socket import socket, AF_INET, SOCK_DGRAM
 import time
 import hashlib
 import sys
-def serve(port):
+
+def serve(port: int) -> None:
     # Create a UDP socket
     # Notice the use of SOCK_DGRAM for UDP packets
     serverSocket = socket(AF_INET, SOCK_DGRAM)
@@ -37,8 +36,7 @@ def serve(port):
         except KeyboardInterrupt:
             serverSocket.close()
             sys.exit()
-        except:
-            continue
 
 if __name__ == '__main__':
     serve(12000)
+
